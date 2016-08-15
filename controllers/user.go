@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	// native packages
+	// standard library packages
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -100,7 +100,7 @@ func (uc UserController) RemoveUser(res http.ResponseWriter, req *http.Request, 
 
 	response := make(map[string]string)
 	response["message"] = "User was successfully deleted!"
-
+	// Write content-type, statuscode, payload
 	res.Header().Set("Content-Type", "application/json")
 	res.WriteHeader(200)
 	json.NewEncoder(res).Encode(response)

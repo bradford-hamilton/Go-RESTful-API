@@ -4,7 +4,7 @@ import (
 	// standard library packages
 	"net/http"
 
-	// third party http package
+	// third party packages
 	"github.com/julienschmidt/httprouter"
 	"github.com/rs/cors"
 	mgo "gopkg.in/mgo.v2"
@@ -31,11 +31,8 @@ func main() {
 	uc := controllers.NewUserController(getSession())
 
 	router.GET("/user", uc.GetAllUsers)
-
 	router.GET("/user/:id", uc.GetUser)
-
 	router.POST("/user", uc.CreateUser)
-
 	router.DELETE("/user/:id", uc.RemoveUser)
 
 	// cors
@@ -43,6 +40,7 @@ func main() {
 		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE"},
 	})
 	handler := c.Handler(router)
+
 	// listen on 1337
 	http.ListenAndServe("localhost:1337", handler)
 
