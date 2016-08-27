@@ -1,1 +1,1 @@
-## Basic REST API written in Go
+## Basic RESTful API written in Go
